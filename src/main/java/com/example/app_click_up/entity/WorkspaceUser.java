@@ -29,6 +29,5 @@ public class WorkspaceUser extends BaseAbstractEntity {
     @Column(nullable = false)
     private Timestamp invitedDate;
 
-
     private Timestamp joinedDate;
 }
