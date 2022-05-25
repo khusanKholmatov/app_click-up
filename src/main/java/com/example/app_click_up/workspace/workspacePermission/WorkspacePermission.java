@@ -1,7 +1,7 @@
-package com.example.app_click_up.entity;
+package com.example.app_click_up.workspace.workspacePermission;
 
-import com.example.app_click_up.entity.base.BaseAbstractEntity;
-import com.example.app_click_up.entity.enums.WorkSpacePermissionName;
+import com.example.app_click_up.base.BaseAbstractEntity;
+import com.example.app_click_up.workspace.workspaceRole.WorkspaceRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,4 +1,4 @@
-create DATABASE click_up
+create DATABASE click_up2
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'

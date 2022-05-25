@@ -1,4 +1,6 @@
-package com.example.app_click_up.entity.enums;
+package com.example.app_click_up.workspace.workspacePermission;
+
+import com.example.app_click_up.workspace.workspaceRole.WorkspaceRoleName;
 
 import java.util.Arrays;
 import java.util.List;

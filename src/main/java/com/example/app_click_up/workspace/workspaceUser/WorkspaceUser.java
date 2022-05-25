@@ -1,7 +1,9 @@
-package com.example.app_click_up.entity;
+package com.example.app_click_up.workspace.workspaceUser;
 
-import com.example.app_click_up.entity.base.BaseAbstractEntity;
-import com.example.app_click_up.entity.enums.WorkspaceRoleName;
+import com.example.app_click_up.base.BaseAbstractEntity;
+import com.example.app_click_up.user.User;
+import com.example.app_click_up.workspace.workspaceRole.WorkspaceRole;
+import com.example.app_click_up.workspace.workspace.Workspace;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,4 +32,5 @@ public class WorkspaceUser extends BaseAbstractEntity {
     private Timestamp invitedDate;
 
     private Timestamp joinedDate;
+
 }
