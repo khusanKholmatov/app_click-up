@@ -63,8 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("samuelbartado@gmail.com");
-        mailSender.setPassword("oscar2020@Grammy");
+        mailSender.setUsername("");
+        mailSender.setPassword("");
         Properties javaMailProperties = mailSender.getJavaMailProperties();
         javaMailProperties.put("mail.transport.protocol", "smtp");
         javaMailProperties.put("mail.smtp.auth", "true");
