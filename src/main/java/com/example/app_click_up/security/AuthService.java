@@ -1,6 +1,9 @@
 package com.example.app_click_up.security;
 
 import com.example.app_click_up.base.ApiResponse;
+import com.example.app_click_up.exception.BadRequestException;
+import com.example.app_click_up.exception.ConflictException;
+import com.example.app_click_up.exception.NotFoundException;
 import com.example.app_click_up.user.User;
 import com.example.app_click_up.user.UserMapper;
 import com.example.app_click_up.user.UserRegisterDto;
@@ -40,7 +43,7 @@ public class AuthService implements UserDetailsService {
 
     public ApiResponse registerUser(UserRegisterDto registerDto) {
         if (userRepository.existsByEmail(registerDto.getEmail()))
-            return new ApiResponse("user already exists", false);
+            throw new ConflictException("email already registered", "email");
 
         User user = userMapper.dtoToObject(registerDto);
 
@@ -61,7 +64,6 @@ public class AuthService implements UserDetailsService {
             javaMailSender.send(mailMessage);
             return true;
         } catch (Exception e) {
-            //todo - custom exception
             return false;
         }
     }
@@ -75,10 +77,8 @@ public class AuthService implements UserDetailsService {
                 userRepository.save(user);
                 return new ApiResponse("account verified successfully", true);
             }
-            return new ApiResponse("something went wrong", false);
+            throw new BadRequestException("something went wrong", "verification fail");
         }
-        return new ApiResponse("user not found", false);
-
-
+        throw new NotFoundException("user not found", "email");
     }
 }

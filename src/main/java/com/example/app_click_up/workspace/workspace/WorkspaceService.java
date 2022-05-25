@@ -1,6 +1,7 @@
 package com.example.app_click_up.workspace.workspace;
 
 import com.example.app_click_up.base.ApiResponse;
+import com.example.app_click_up.exception.ConflictException;
 import com.example.app_click_up.workspace.workspacePermission.WorkSpacePermissionName;
 import com.example.app_click_up.user.User;
 import com.example.app_click_up.workspace.workspacePermission.WorkspacePermission;
@@ -33,7 +34,7 @@ public class WorkspaceService {
 
     public ApiResponse addWorkspace(WorkspaceDto workSpaceDto, User user) {
         if (workspaceRepository.existsByOwnerIdAndName(user.getId(), workSpaceDto.getName())) {
-            return new ApiResponse("workspace already exists", false);
+            throw new ConflictException("workspace not found", "OwnerId and name");
         }
 
         Workspace workspace = workspaceMapper.dtoToObject(workSpaceDto, user);

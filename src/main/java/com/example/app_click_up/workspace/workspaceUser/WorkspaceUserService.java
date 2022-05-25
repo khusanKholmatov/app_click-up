@@ -1,6 +1,7 @@
 package com.example.app_click_up.workspace.workspaceUser;
 
 import com.example.app_click_up.base.ApiResponse;
+import com.example.app_click_up.exception.NotFoundException;
 import com.example.app_click_up.user.User;
 import com.example.app_click_up.user.UserRepository;
 import com.example.app_click_up.workspace.workspace.Workspace;
@@ -41,9 +42,9 @@ public class WorkspaceUserService {
     public ApiResponse manageUser(UUID workSpaceId, MemberDto memberDto) {
         if (memberDto.getAddType().equals(ADD)) {
             WorkspaceUser workspaceUser = new WorkspaceUser(
-                    workspaceRepository.findById(workSpaceId).orElseThrow(()->new ResourceNotFoundException("workspace not found")),
-                    userRepository.findById(memberDto.getId()).orElseThrow(()->new ResourceNotFoundException("user not found")),
-                    workspaceRoleRepository.findById(memberDto.getWorkspaceRoleId()).orElseThrow(()->new ResourceNotFoundException("workspace role not found")),
+                    workspaceRepository.findById(workSpaceId).orElseThrow(()->new NotFoundException("workspace not found", "id")),
+                    userRepository.findById(memberDto.getId()).orElseThrow(()->new NotFoundException("user not found", "id")),
+                    workspaceRoleRepository.findById(memberDto.getWorkspaceRoleId()).orElseThrow(()->new NotFoundException("workspace role not found", "id")),
                     new Timestamp(System.currentTimeMillis()),
                     null
             );
